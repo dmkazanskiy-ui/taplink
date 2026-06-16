@@ -234,7 +234,7 @@
       <div class="hero-name">Дмитрий Казанский</div>
     </div>
     <!-- КНОПКА: Связаться со мной -->
-    <a class="hero-btn" href="https://t.me/dmkazanskiy" target="_blank" rel="noopener">Связаться со мной</a>
+    <a class="hero-btn" href="https://t.me/dmkazanskiy" target="_blank" rel="noopener" data-ga="Связаться со мной">Связаться со мной</a>
   </header>
 
   <section class="content">
@@ -251,7 +251,7 @@
       <h2>Мои приложения для поддержания дисциплины:</h2>
 
       <!-- КНОПКА/КАРТА: Forma AI -->
-      <a class="card card--forma" href="https://t.me/forma_forma_bot?start=for_instagram-taplink" target="_blank" rel="noopener">
+      <a class="card card--forma" href="https://t.me/forma_forma_bot?start=for_instagram-taplink" target="_blank" rel="noopener" data-ga="Forma AI">
         <img class="card-icon" src="assets/forma.png" alt="Forma AI" />
         <div class="card-body">
           <div class="card-title">Forma AI: Умный дневник питания</div>
@@ -259,7 +259,7 @@
       </a>
 
       <!-- КНОПКА/КАРТА: inFocus -->
-      <a class="card card--infocus" href="https://t.me/infocus_app_bot" target="_blank" rel="noopener">
+      <a class="card card--infocus" href="https://t.me/infocus_app_bot" target="_blank" rel="noopener" data-ga="inFocus">
         <img class="card-icon" src="assets/infocus.png" alt="inFocus" />
         <div class="card-body">
           <div class="card-title">in Focus: треккер привычек</div>
@@ -272,7 +272,7 @@
       <h2>Мой блог в других соц-сетях</h2>
 
       <!-- КНОПКА/КАРТА: Telegram-канал -->
-      <a class="card card--telegram" href="https://t.me/dmkazanskiy_trnc" target="_blank" rel="noopener">
+      <a class="card card--telegram" href="https://t.me/dmkazanskiy_trnc" target="_blank" rel="noopener" data-ga="Telegram-канал">
         <img class="card-icon" src="assets/telegram.png" alt="Telegram" />
         <div class="card-body">
           <div class="card-title">Telegram: Дневник гибридного атлета</div>
@@ -280,7 +280,7 @@
       </a>
 
       <!-- КНОПКА/КАРТА: YouTube -->
-      <a class="card card--youtube" href="https://www.youtube.com/channel/UCuXLdduhqVHosyHzJSKxAvw" target="_blank" rel="noopener">
+      <a class="card card--youtube" href="https://www.youtube.com/channel/UCuXLdduhqVHosyHzJSKxAvw" target="_blank" rel="noopener" data-ga="YouTube">
         <img class="card-icon" src="assets/youtube.png" alt="YouTube" />
         <div class="card-body">
           <div class="card-title">YouTube: @dmkazanskiy</div>
@@ -295,7 +295,7 @@
       <p class="lead">За последние годы запускал веб-сервисы, мобильные приложения, AI-инструменты и корпоративные платформы для крупных компаний.</p>
 
       <!-- КНОПКА/КАРТА: Портфолио -->
-      <a class="card card--portfolio" href="https://dmkazanskiy.ru/" target="_blank" rel="noopener">
+      <a class="card card--portfolio" href="https://dmkazanskiy.ru/" target="_blank" rel="noopener" data-ga="Портфолио">
         <img class="card-icon" src="assets/portfolio.png" alt="Портфолио" />
         <div class="card-body">
           <div class="card-title">Senior Product Designer</div>
@@ -309,6 +309,34 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!-- ===== Google Analytics 4 ===== -->
+<!-- Вставь свой Measurement ID между кавычек ниже (вида G-XXXXXXXXXX) -->
+<script>
+  const GA_ID = 'G-XXXXXXXXXX';   // ← СЮДА свой ID из Google Analytics
+
+  if (GA_ID && GA_ID.indexOf('XXXX') === -1) {
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+
+    // отслеживание кликов по кнопкам/баннерам
+    document.querySelectorAll('[data-ga]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        gtag('event', 'link_click', {
+          link_name: el.getAttribute('data-ga'),
+          link_url: el.href
+        });
+      });
+    });
+  }
 </script>
 </body>
 </html>
