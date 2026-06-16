@@ -325,7 +325,9 @@
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { dataLayer.push(arguments); };
     gtag('js', new Date());
-    gtag('config', GA_ID);
+    // режим отладки включается только при ?debug=1 (для DebugView), на обычных визитах выключен
+    var GA_DEBUG = location.search.indexOf('debug=1') !== -1;
+    gtag('config', GA_ID, GA_DEBUG ? { debug_mode: true } : {});
 
     // отслеживание кликов по кнопкам/баннерам
     document.querySelectorAll('[data-ga]').forEach(function (el) {
