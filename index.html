@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Дмитрий Казанский</title>
+<meta name="description" content="Спорт, дисциплина и продукты, которые помогают людям меняться. Приложения, блог и портфолио." />
+
+<!-- Open Graph: красивое превью при отправке ссылки в мессенджерах -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Дмитрий Казанский" />
+<meta property="og:description" content="Спорт, дисциплина и продукты, которые помогают людям меняться." />
+<meta property="og:image" content="assets/avatar.png" />
+
+<link rel="icon" href="assets/avatar.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --maxw: 480px;
+    --slate: #334155;
+    --content-bg: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a1224;
+    color: #0f172a;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { width: 100%; max-width: var(--maxw); background: var(--content-bg); position: relative; overflow: hidden; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    padding: 56px 24px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    text-align: center;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0; z-index: -1;
+    background: #1a1f3a url('assets/bg.png') center/cover no-repeat;
+  }
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(10,18,36,0.35) 100%);
+  }
+
+  .avatar {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.7);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+
+  .hero-greeting { color: #efefef; font-size: 17px; font-weight: 600; line-height: 1.2; }
+  .hero-name { color: #fff; font-size: 30px; font-weight: 700; letter-spacing: -1px; line-height: 1.15; }
+
+  .hero-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #fff; color: #000;
+    font-size: 15px; font-weight: 600;
+    padding: 13px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .hero-btn:active { transform: scale(.97); }
+
+  /* ---------- CONTENT ---------- */
+  .content {
+    position: relative;
+    background: var(--content-bg);
+    border-radius: 28px 28px 0 0;
+    margin-top: -24px;
+    padding: 28px 18px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .section { display: flex; flex-direction: column; gap: 16px; }
+  .section h2 {
+    color: var(--slate);
+    font-size: 18px; font-weight: 500; line-height: 1.4;
+    padding: 0 6px;
+  }
+  .section p.lead {
+    color: #000; font-size: 15px; font-weight: 400; line-height: 1.5;
+    padding: 0 6px;
+  }
+  .section p.lead + p.lead { margin-top: 4px; }
+
+  /* ---------- BANNER CARD ---------- */
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    border-radius: 26px;
+    border: 1.5px solid transparent;
+    text-decoration: none;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+    transition: transform .12s ease, filter .12s ease;
+  }
+  .card:active { transform: scale(.985); }
+  .card:hover { filter: brightness(1.06); }
+
+  .card-icon {
+    flex: 0 0 auto;
+    width: 64px; height: 64px;
+    border-radius: 18px;
+    object-fit: cover;
+    background: rgba(255,255,255,0.04);
+  }
+  .card-body { display: flex; flex-direction: column; gap: 10px; min-width: 0; flex: 1; }
+  .card-title { font-size: 16px; font-weight: 600; letter-spacing: -.2px; line-height: 1.2; }
+  .card-sub   { font-size: 13px; font-weight: 400; line-height: 1.35; opacity: .8; }
+
+  .card-btn {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; color: #000;
+    font-size: 13px; font-weight: 600;
+    padding: 9px 20px;
+    border-radius: 20px;
+  }
+  .card-btn img { width: 16px; height: 16px; }
+
+  /* per-banner themes */
+  .card--forma    { background: linear-gradient(88.5deg, rgb(40,54,7) 0%, rgb(10,18,36) 100%); border-color: rgba(183,255,0,0.25); }
+  .card--infocus  { background: linear-gradient(88.5deg, rgb(121,121,121) 0%, rgb(29,29,29) 100%); border-color: rgba(51,51,51,0.25); }
+  .card--telegram { background: linear-gradient(88.5deg, rgb(0,53,119) 0%, rgb(10,18,36) 100%); border-color: #60a5fa; }
+  .card--youtube  { background: linear-gradient(88.5deg, rgb(44,0,0) 0%, rgb(30,30,30) 100%); border-color: rgba(255,0,0,0.25); }
+  .card--portfolio{ background: #e8e8e8; border-color: rgba(169,169,169,0.25); color: #0f172a; }
+  .card--portfolio .card-title { color: var(--slate); }
+  .card--portfolio .card-sub   { color: #000; }
+
+  .footer { text-align: center; font-size: 12px; color: #94a3b8; padding-top: 8px; }
+  .footer a { color: #64748b; text-decoration: none; }
+
+  @media (min-width: 481px) {
+    body { padding: 0; background: #0a1224; }
+    .page { box-shadow: 0 0 60px rgba(0,0,0,0.5); }
+  }
+</style>
+</head>
+<body>
+<!--
+  ┌──────────────────────────────────────────────────────────────┐
+  │  НАСТРОЙКА ССЫЛОК                                             │
+  │  Замени href="#" на нужный адрес у каждой кнопки ниже.        │
+  │  Внешние ссылки уже открываются в новой вкладке.             │
+  └──────────────────────────────────────────────────────────────┘
+-->
+<main class="page">
+
+  <!-- ===== ШАПКА ===== -->
+  <header class="hero">
+    <img class="avatar" src="assets/avatar.png" alt="Дмитрий Казанский" />
+    <div>
+      <div class="hero-greeting">Привет, я</div>
+      <div class="hero-name">Дмитрий Казанский</div>
+    </div>
+    <!-- КНОПКА: Связаться со мной  →  напр. https://t.me/username -->
+    <a class="hero-btn" href="#" target="_blank" rel="noopener">Связаться со мной</a>
+  </header>
+
+  <section class="content">
+
+    <!-- ===== КТО Я ===== -->
+    <div class="section">
+      <h2>Кто я</h2>
+      <p class="lead">За 10 лет прошёл путь от 155 кг до 100 кг.</p>
+      <p class="lead">Сейчас строю жизнь вокруг спорта, дисциплины и создания продуктов, которые помогают людям меняться. В своем блоге делюсь своим опытом, ошибками и инструментами, которые работают на длинной дистанции.</p>
+    </div>
+
+    <!-- ===== ПРИЛОЖЕНИЯ ===== -->
+    <div class="section">
+      <h2>Мои приложения для поддержания дисциплины:</h2>
+
+      <!-- КНОПКА/КАРТА: Forma AI  →  ссылка на приложение Forma AI -->
+      <a class="card card--forma" href="#" target="_blank" rel="noopener">
+        <img class="card-icon" src="assets/forma.png" alt="Forma AI" />
+        <div class="card-body">
+          <div class="card-title">Forma AI: Умный дневник питания</div>
+          <div class="card-sub">Помогает удерживать цель по калориям и не срываться</div>
+          <span class="card-btn"><img src="assets/gift.png" alt="" />Получить 5 дней PRO</span>
+        </div>
+      </a>
+
+      <!-- КНОПКА/КАРТА: inFocus  →  ссылка на приложение inFocus -->
+      <a class="card card--infocus" href="#" target="_blank" rel="noopener">
+        <img class="card-icon" src="assets/infocus.png" alt="inFocus" />
+        <div class="card-body">
+          <div class="card-title">in Focus: треккер привычек</div>
+          <div class="card-sub">Дневник для ежедневного контроля дисциплины</div>
+          <span class="card-btn">Открыть</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- ===== БЛОГ ===== -->
+    <div class="section">
+      <h2>Мой блог в других соц-сетях</h2>
+
+      <!-- КНОПКА/КАРТА: Telegram  →  напр. https://t.me/channel -->
+      <a class="card card--telegram" href="#" target="_blank" rel="noopener">
+        <img class="card-icon" src="assets/telegram.png" alt="Telegram" />
+        <div class="card-body">
+          <div class="card-title">Telegram: Дневник гибридного атлета</div>
+          <div class="card-sub">Показываю свою рутину, делюсь мыслями и путем</div>
+          <span class="card-btn">Читать дневник</span>
+        </div>
+      </a>
+
+      <!-- КНОПКА/КАРТА: YouTube  →  канал на YouTube -->
+      <a class="card card--youtube" href="https://youtube.com/@dmkazanskiy" target="_blank" rel="noopener">
+        <img class="card-icon" src="assets/youtube.png" alt="YouTube" />
+        <div class="card-body">
+          <div class="card-title">YouTube: @dmkazanskiy</div>
+          <div class="card-sub">Снимаю блоги на свой ютуб канал</div>
+          <span class="card-btn">Смотреть блог</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- ===== ДЛЯ КОМПАНИЙ ===== -->
+    <div class="section">
+      <h2>Для компаний:</h2>
+      <p class="lead">Построил карьеру продуктового дизайнера. Помогаю превращать сложные идеи в понятные цифровые продукты.</p>
+      <p class="lead">За последние годы запускал веб-сервисы, мобильные приложения, AI-инструменты и корпоративные платформы для крупных компаний.</p>
+
+      <!-- КНОПКА/КАРТА: Портфолио  →  ссылка на портфолио / резюме -->
+      <a class="card card--portfolio" href="#" target="_blank" rel="noopener">
+        <img class="card-icon" src="assets/portfolio.png" alt="Портфолио" />
+        <div class="card-body">
+          <div class="card-title">Senior Product Designer</div>
+          <div class="card-sub">Фокус на веб и мобильные интерфейсы</div>
+          <span class="card-btn">Смотреть</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="footer">© <span id="year"></span> Дмитрий Казанский</div>
+  </section>
+</main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
