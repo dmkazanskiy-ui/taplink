@@ -38,11 +38,13 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  .page { width: 100%; max-width: var(--maxw); background: var(--content-bg); position: relative; overflow: hidden; }
+  .page { width: 100%; max-width: var(--maxw); background: var(--content-bg); position: relative; }
 
   /* ---------- HERO ---------- */
   .hero {
-    position: relative;
+    position: sticky;          /* фото «прилипает» к верху — параллакс-наезд */
+    top: 0;
+    z-index: 0;
     padding: 56px 24px 64px;
     display: flex;
     flex-direction: column;
@@ -130,9 +132,11 @@
   /* ---------- CONTENT ---------- */
   .content {
     position: relative;
+    z-index: 1;                /* контент едет поверх «прилипшего» фото */
     background: var(--content-bg);
     border-radius: 28px 28px 0 0;
     margin-top: -24px;
+    box-shadow: 0 -12px 30px rgba(0,0,0,0.18);
     padding: 28px 18px 56px;
     display: flex;
     flex-direction: column;
