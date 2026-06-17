@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Дмитрий Казанский</title>
+<meta name="description" content="Спорт, дисциплина и продукты, которые помогают людям меняться. Приложения, блог и портфолио." />
+
+<!-- Open Graph: красивое превью при отправке ссылки в мессенджерах -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Дмитрий Казанский" />
+<meta property="og:description" content="Спорт, дисциплина и продукты, которые помогают людям меняться." />
+<meta property="og:image" content="assets/avatar.png" />
+
+<link rel="icon" href="assets/avatar.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --maxw: 480px;
+    --slate: #334155;
+    --content-bg: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a1224;
+    color: #0f172a;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { width: 100%; max-width: var(--maxw); background: var(--content-bg); position: relative; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: sticky;          /* фото «прилипает» к верху — параллакс-наезд */
+    top: 0;
+    z-index: 0;
+    padding: 56px 24px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    text-align: center;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0; z-index: -1;
+    background: #1a1f3a url('assets/bg.png') center/cover no-repeat;
+  }
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(10,18,36,0.35) 100%);
+    pointer-events: none;
+  }
+
+  /* ---- анимированная заставка (слоумо-волна, как в VK Музыке) ---- */
+  .hero > * { position: relative; z-index: 2; }       /* контент над анимацией */
+  .hero-anim {
+    position: absolute; inset: 0; z-index: 0;
+    overflow: hidden; pointer-events: none;
+  }
+  .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(46px);
+    mix-blend-mode: screen;
+    opacity: .6;
+    will-change: transform;
+  }
+  .blob.b1 { width: 280px; height: 280px; top: -60px;  left: -70px;
+    background: radial-gradient(circle at 50% 50%, #ff7a3d 0%, rgba(255,122,61,0) 70%);
+    animation: wave1 19s ease-in-out infinite alternate; }
+  .blob.b2 { width: 320px; height: 320px; bottom: -90px; left: -40px;
+    background: radial-gradient(circle at 50% 50%, #e23a2a 0%, rgba(226,58,42,0) 70%);
+    animation: wave2 24s ease-in-out infinite alternate; }
+  .blob.b3 { width: 300px; height: 300px; top: -40px;  right: -90px;
+    background: radial-gradient(circle at 50% 50%, #3b6bd6 0%, rgba(59,107,214,0) 70%);
+    animation: wave3 27s ease-in-out infinite alternate; }
+  .blob.b4 { width: 240px; height: 240px; bottom: -70px; right: -60px;
+    background: radial-gradient(circle at 50% 50%, #b23bd6 0%, rgba(178,59,214,0) 70%);
+    animation: wave4 22s ease-in-out infinite alternate; }
+
+  @keyframes wave1 { 0% { transform: translate(0,0) scale(1); }
+    100% { transform: translate(90px,70px) scale(1.25); } }
+  @keyframes wave2 { 0% { transform: translate(0,0) scale(1.1); }
+    100% { transform: translate(120px,-60px) scale(0.85); } }
+  @keyframes wave3 { 0% { transform: translate(0,0) scale(1); }
+    100% { transform: translate(-110px,90px) scale(1.3); } }
+  @keyframes wave4 { 0% { transform: translate(0,0) scale(0.9); }
+    100% { transform: translate(-90px,-50px) scale(1.15); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blob { animation: none; }
+  }
+
+  .avatar {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.7);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+
+  .hero-greeting { color: #efefef; font-size: 17px; font-weight: 600; line-height: 1.2; }
+  .hero-name { color: #fff; font-size: 30px; font-weight: 700; letter-spacing: -1px; line-height: 1.15; }
+
+  .hero-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    background: #fff; color: #000;
+    font-size: 15px; font-weight: 600;
+    padding: 13px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .hero-btn:active { transform: scale(.97); }
+
+  /* ---------- CONTENT ---------- */
+  .content {
+    position: relative;
+    z-index: 1;                /* контент едет поверх «прилипшего» фото */
+    background: var(--content-bg);
+    border-radius: 28px 28px 0 0;
+    margin-top: -24px;
+    box-shadow: 0 -12px 30px rgba(0,0,0,0.18);
+    padding: 28px 18px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .section { display: flex; flex-direction: column; gap: 16px; }
+  .section h2 {
+    color: var(--slate);
+    font-size: 18px; font-weight: 500; line-height: 1.4;
+    padding: 0 6px;
+  }
+  .section p.lead {
+    color: #000; font-size: 15px; font-weight: 400; line-height: 1.5;
+    padding: 0 6px;
+  }
+  .section p.lead + p.lead { margin-top: 4px; }
+
+  /* ---------- BANNER CARD ---------- */
+  .card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px;
+    border-radius: 26px;
+    border: 1.5px solid transparent;
+    text-decoration: none;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+    transition: transform .12s ease, filter .12s ease;
+  }
+  .card:active { transform: scale(.985); }
+  .card:hover { filter: brightness(1.06); }
+
+  .card-icon {
+    flex: 0 0 auto;
+    width: 80px; height: 80px;
+    border-radius: 20px;
+    object-fit: cover;
+    background: rgba(255,255,255,0.04);
+  }
+  /* отступы как в макете: заголовок→описание 8px, описание→кнопка 20px */
+  .card-body { display: flex; flex-direction: column; justify-content: center; align-self: stretch; min-width: 0; flex: 1; }
+  /* значения из Figma (×0.5 от артборда 1080px): title 32→16, sub 20→10 */
+  .card-title { font-size: 16px; font-weight: 600; letter-spacing: -.16px; line-height: 1.2; }
+  .card-sub   { font-size: 12px; font-weight: 400; letter-spacing: -.12px; line-height: 1.35; opacity: .8; margin-top: 8px; }
+
+  .card-btn {
+    align-self: flex-start;
+    margin-top: 20px;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; color: #000;
+    font-size: 13px; font-weight: 600;
+    padding: 9px 20px;
+    border-radius: 20px;
+  }
+  .card-btn img { width: 16px; height: 16px; }
+
+  /* per-banner themes */
+  .card--forma    { background: linear-gradient(88.5deg, rgb(40,54,7) 0%, rgb(10,18,36) 100%); border-color: rgba(183,255,0,0.25); }
+  .card--infocus  { background: linear-gradient(88.5deg, rgb(121,121,121) 0%, rgb(29,29,29) 100%); border-color: rgba(51,51,51,0.25); }
+  .card--telegram { background: linear-gradient(88.5deg, rgb(0,53,119) 0%, rgb(10,18,36) 100%); border-color: #60a5fa; }
+  .card--youtube  { background: linear-gradient(88.5deg, rgb(44,0,0) 0%, rgb(30,30,30) 100%); border-color: rgba(255,0,0,0.25); }
+  .card--portfolio{ background: #e8e8e8; border-color: rgba(169,169,169,0.25); color: #0f172a; }
+  .card--portfolio .card-title { color: var(--slate); }
+  .card--portfolio .card-sub   { color: #000; }
+
+  .footer { text-align: center; font-size: 12px; color: #94a3b8; padding-top: 8px; }
+  .footer a { color: #64748b; text-decoration: none; }
+
+  @media (min-width: 481px) {
+    body { padding: 0; background: #0a1224; }
+    .page { box-shadow: 0 0 60px rgba(0,0,0,0.5); }
+  }
+</style>
+</head>
+<body>
+<!--
+  ┌──────────────────────────────────────────────────────────────┐
+  │  НАСТРОЙКА ССЫЛОК                                             │
+  │  Замени href="#" на нужный адрес у каждой кнопки ниже.        │
+  │  Внешние ссылки уже открываются в новой вкладке.             │
+  └──────────────────────────────────────────────────────────────┘
+-->
+<main class="page">
+
+  <!-- ===== ШАПКА ===== -->
+  <header class="hero">
+    <div class="hero-anim" aria-hidden="true">
+      <span class="blob b1"></span>
+      <span class="blob b2"></span>
+      <span class="blob b3"></span>
+      <span class="blob b4"></span>
+    </div>
+    <img class="avatar" src="assets/avatar.png" alt="Дмитрий Казанский" />
+    <div>
+      <div class="hero-greeting">Привет, я</div>
+      <div class="hero-name">Дмитрий Казанский</div>
+    </div>
+    <!-- КНОПКА: Связаться со мной -->
+    <a class="hero-btn" href="https://t.me/dmkazanskiy" target="_blank" rel="noopener" data-ga="Связаться со мной">Связаться со мной</a>
+  </header>
+
+  <section class="content">
+
+    <!-- ===== КТО Я ===== -->
+    <div class="section">
+      <h2>Кто я</h2>
+      <p class="lead">За 10 лет суммарно скинул более 100 кг.</p>
+      <p class="lead">Сейчас строю жизнь вокруг спорта, дисциплины и создания продуктов, которые помогают людям меняться. В своем блоге делюсь своим опытом, ошибками и инструментами, которые работают на длинной дистанции.</p>
+    </div>
+
+    <!-- ===== ПРИЛОЖЕНИЯ ===== -->
+    <div class="section">
+      <h2>Мои приложения для поддержания дисциплины:</h2>
+
+      <!-- КНОПКА/КАРТА: Forma AI -->
+      <a class="card card--forma" href="https://t.me/forma_forma_bot?start=for_instagram-taplink" target="_blank" rel="noopener" data-ga="Forma AI">
+        <img class="card-icon" src="assets/forma.png" alt="Forma AI" />
+        <div class="card-body">
+          <div class="card-title">Forma AI: Умный дневник питания</div>
+          <div class="card-sub">Помогает удерживать цель по калориям и не срываться</div>        </div>
+      </a>
+
+      <!-- КНОПКА/КАРТА: inFocus -->
+      <a class="card card--infocus" href="https://t.me/infocus_app_bot" target="_blank" rel="noopener" data-ga="inFocus">
+        <img class="card-icon" src="assets/infocus.png" alt="inFocus" />
+        <div class="card-body">
+          <div class="card-title">in Focus: треккер привычек</div>
+          <div class="card-sub">Дневник для ежедневного контроля дисциплины</div>        </div>
+      </a>
+    </div>
+
+    <!-- ===== БЛОГ ===== -->
+    <div class="section">
+      <h2>Мой блог в других соц-сетях</h2>
+
+      <!-- КНОПКА/КАРТА: Telegram-канал -->
+      <a class="card card--telegram" href="https://t.me/dmkazanskiy_trnc" target="_blank" rel="noopener" data-ga="Telegram-канал">
+        <img class="card-icon" src="assets/telegram.png" alt="Telegram" />
+        <div class="card-body">
+          <div class="card-title">Telegram: Дневник гибридного атлета</div>
+          <div class="card-sub">Показываю свою рутину, делюсь мыслями</div>        </div>
+      </a>
+
+      <!-- КНОПКА/КАРТА: YouTube -->
+      <a class="card card--youtube" href="https://www.youtube.com/channel/UCuXLdduhqVHosyHzJSKxAvw" target="_blank" rel="noopener" data-ga="YouTube">
+        <img class="card-icon" src="assets/youtube.png" alt="YouTube" />
+        <div class="card-body">
+          <div class="card-title">YouTube: @dmkazanskiy</div>
+          <div class="card-sub">Снимаю видео-влоги на свой ютуб канал</div>        </div>
+      </a>
+    </div>
+
+    <!-- ===== ДЛЯ КОМПАНИЙ ===== -->
+    <div class="section">
+      <h2>Для компаний:</h2>
+      <p class="lead">Построил карьеру продуктового дизайнера. Помогаю превращать сложные идеи в понятные цифровые продукты.</p>
+      <p class="lead">За последние годы запускал веб-сервисы, мобильные приложения, AI-инструменты и корпоративные платформы для крупных компаний.</p>
+
+      <!-- КНОПКА/КАРТА: Портфолио -->
+      <a class="card card--portfolio" href="https://dmkazanskiy.ru/" target="_blank" rel="noopener" data-ga="Портфолио">
+        <img class="card-icon" src="assets/portfolio.png" alt="Портфолио" />
+        <div class="card-body">
+          <div class="card-title">Senior Product Designer</div>
+          <div class="card-sub">Фокус на веб и мобильные интерфейсы</div>        </div>
+      </a>
+    </div>
+
+    <div class="footer">© <span id="year"></span> Дмитрий Казанский</div>
+  </section>
+</main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!-- ===== Google Analytics 4 ===== -->
+<!-- Вставь свой Measurement ID между кавычек ниже (вида G-XXXXXXXXXX) -->
+<script>
+  const GA_ID = 'G-K4Y92KKWYH';   // Measurement ID из Google Analytics
+
+  if (GA_ID && GA_ID.indexOf('XXXX') === -1) {
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    // режим отладки включается только при ?debug=1 (для DebugView), на обычных визитах выключен
+    var GA_DEBUG = location.search.indexOf('debug=1') !== -1;
+    gtag('config', GA_ID, GA_DEBUG ? { debug_mode: true } : {});
+
+    // отслеживание кликов по кнопкам/баннерам
+    document.querySelectorAll('[data-ga]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        gtag('event', 'link_click', {
+          link_name: el.getAttribute('data-ga'),
+          link_url: el.href
+        });
+      });
+    });
+  }
+</script>
+</body>
+</html>
