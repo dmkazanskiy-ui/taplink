@@ -209,6 +209,29 @@
   .footer { text-align: center; font-size: 12px; color: #94a3b8; padding-top: 8px; }
   .footer a { color: #64748b; text-decoration: none; }
 
+  /* ---------- LANGUAGE TOGGLE ---------- */
+  .lang {
+    position: absolute; top: 16px; right: 16px; z-index: 5;
+    display: inline-flex;
+    background: rgba(10,18,36,0.35);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 999px;
+    padding: 3px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .lang button {
+    appearance: none; border: 0; cursor: pointer;
+    font-family: inherit; font-size: 12px; font-weight: 600;
+    color: rgba(255,255,255,0.75);
+    background: transparent;
+    padding: 5px 11px;
+    border-radius: 999px;
+    line-height: 1;
+    transition: background .15s ease, color .15s ease;
+  }
+  .lang button.is-active { background: #fff; color: #0f172a; }
+
   @media (min-width: 481px) {
     body { padding: 0; background: #0a1224; }
     .page { box-shadow: 0 0 60px rgba(0,0,0,0.5); }
@@ -225,6 +248,12 @@
 -->
 <main class="page">
 
+  <!-- ===== ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА ===== -->
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="ru">RU</button>
+    <button type="button" data-lang="en">EN</button>
+  </div>
+
   <!-- ===== ШАПКА ===== -->
   <header class="hero">
     <div class="hero-anim" aria-hidden="true">
@@ -235,53 +264,53 @@
     </div>
     <img class="avatar" src="assets/avatar.png" alt="Дмитрий Казанский" />
     <div>
-      <div class="hero-greeting">Привет, я</div>
-      <div class="hero-name">Дмитрий Казанский</div>
+      <div class="hero-greeting" data-i18n="greeting">Привет, я</div>
+      <div class="hero-name" data-i18n="name">Дмитрий Казанский</div>
     </div>
     <!-- КНОПКА: Связаться со мной -->
-    <a class="hero-btn" href="https://t.me/dmkazanskiy" target="_blank" rel="noopener" data-ga="Связаться со мной">Связаться со мной</a>
+    <a class="hero-btn" href="https://t.me/dmkazanskiy" target="_blank" rel="noopener" data-ga="Связаться со мной" data-i18n="contact">Связаться со мной</a>
   </header>
 
   <section class="content">
 
     <!-- ===== КТО Я ===== -->
     <div class="section">
-      <h2>Кто я</h2>
-      <p class="lead">За 10 лет суммарно скинул более 100 кг.</p>
-      <p class="lead">Сейчас строю жизнь вокруг спорта, дисциплины и создания продуктов, которые помогают людям меняться. В своем блоге делюсь своим опытом, ошибками и инструментами, которые работают на длинной дистанции.</p>
+      <h2 data-i18n="s_about">Кто я</h2>
+      <p class="lead" data-i18n="about_1">За 10 лет суммарно скинул более 100 кг.</p>
+      <p class="lead" data-i18n="about_2">Сейчас строю жизнь вокруг спорта, дисциплины и создания продуктов, которые помогают людям меняться. В своем блоге делюсь своим опытом, ошибками и инструментами, которые работают на длинной дистанции.</p>
     </div>
 
     <!-- ===== ПРИЛОЖЕНИЯ ===== -->
     <div class="section">
-      <h2>Мои приложения для поддержания дисциплины:</h2>
+      <h2 data-i18n="s_apps">Мои приложения для поддержания дисциплины:</h2>
 
       <!-- КНОПКА/КАРТА: Forma AI -->
       <a class="card card--forma" href="https://t.me/forma_forma_bot?start=for_instagram-taplink" target="_blank" rel="noopener" data-ga="Forma AI">
         <img class="card-icon" src="assets/forma.png" alt="Forma AI" />
         <div class="card-body">
-          <div class="card-title">Forma AI: Умный дневник питания</div>
-          <div class="card-sub">Помогает удерживать цель по калориям и не срываться</div>        </div>
+          <div class="card-title" data-i18n="forma_t">Forma AI: Умный дневник питания</div>
+          <div class="card-sub" data-i18n="forma_s">Помогает удерживать цель по калориям и не срываться</div>        </div>
       </a>
 
       <!-- КНОПКА/КАРТА: inFocus -->
       <a class="card card--infocus" href="https://t.me/infocus_app_bot" target="_blank" rel="noopener" data-ga="inFocus">
         <img class="card-icon" src="assets/infocus.png" alt="inFocus" />
         <div class="card-body">
-          <div class="card-title">in Focus: треккер привычек</div>
-          <div class="card-sub">Дневник для ежедневного контроля дисциплины</div>        </div>
+          <div class="card-title" data-i18n="infocus_t">in Focus: треккер привычек</div>
+          <div class="card-sub" data-i18n="infocus_s">Дневник для ежедневного контроля дисциплины</div>        </div>
       </a>
     </div>
 
     <!-- ===== БЛОГ ===== -->
     <div class="section">
-      <h2>Мой блог в социальных сетях</h2>
+      <h2 data-i18n="s_blog">Мой блог в социальных сетях</h2>
 
       <!-- КНОПКА/КАРТА: Instagram -->
       <a class="card card--instagram" href="https://instagram.com/dmkazanskiy" target="_blank" rel="noopener" data-ga="Instagram">
         <img class="card-icon" src="assets/instagram.png" alt="Instagram" />
         <div class="card-body">
-          <div class="card-title">Instagram: @dmkazanskiy</div>
-          <div class="card-sub">Снимаю мотивирующие reels о своей трансформации</div>
+          <div class="card-title" data-i18n="ig_t">Instagram: @dmkazanskiy</div>
+          <div class="card-sub" data-i18n="ig_s">Снимаю мотивирующие reels о своей трансформации</div>
         </div>
       </a>
 
@@ -289,40 +318,134 @@
       <a class="card card--telegram" href="https://t.me/dmkazanskiy_trnc" target="_blank" rel="noopener" data-ga="Telegram-канал">
         <img class="card-icon" src="assets/telegram.png" alt="Telegram" />
         <div class="card-body">
-          <div class="card-title">Telegram: Дневник гибридного атлета</div>
-          <div class="card-sub">Показываю свою рутину, делюсь мыслями</div>        </div>
+          <div class="card-title" data-i18n="tg_t">Telegram: Дневник гибридного атлета</div>
+          <div class="card-sub" data-i18n="tg_s">Показываю свою рутину, делюсь мыслями</div>        </div>
       </a>
 
       <!-- КНОПКА/КАРТА: YouTube -->
       <a class="card card--youtube" href="https://www.youtube.com/channel/UCuXLdduhqVHosyHzJSKxAvw" target="_blank" rel="noopener" data-ga="YouTube">
         <img class="card-icon" src="assets/youtube.png" alt="YouTube" />
         <div class="card-body">
-          <div class="card-title">YouTube: @dmkazanskiy</div>
-          <div class="card-sub">Снимаю видео-влоги на свой ютуб канал</div>        </div>
+          <div class="card-title" data-i18n="yt_t">YouTube: @dmkazanskiy</div>
+          <div class="card-sub" data-i18n="yt_s">Снимаю видео-влоги на свой ютуб канал</div>        </div>
       </a>
     </div>
 
     <!-- ===== ДЛЯ КОМПАНИЙ ===== -->
     <div class="section">
-      <h2>Для компаний:</h2>
-      <p class="lead">Построил карьеру продуктового дизайнера. Помогаю превращать сложные идеи в понятные цифровые продукты.</p>
-      <p class="lead">За последние годы запускал веб-сервисы, мобильные приложения, AI-инструменты и корпоративные платформы для крупных компаний.</p>
+      <h2 data-i18n="s_companies">Для компаний:</h2>
+      <p class="lead" data-i18n="comp_1">Построил карьеру продуктового дизайнера. Помогаю превращать сложные идеи в понятные цифровые продукты.</p>
+      <p class="lead" data-i18n="comp_2">За последние годы запускал веб-сервисы, мобильные приложения, AI-инструменты и корпоративные платформы для крупных компаний.</p>
 
       <!-- КНОПКА/КАРТА: Портфолио -->
       <a class="card card--portfolio" href="https://dmkazanskiy.ru/" target="_blank" rel="noopener" data-ga="Портфолио">
         <img class="card-icon" src="assets/portfolio.png" alt="Портфолио" />
         <div class="card-body">
-          <div class="card-title">Senior Product Designer</div>
-          <div class="card-sub">Фокус на веб и мобильные интерфейсы</div>        </div>
+          <div class="card-title" data-i18n="port_t">Senior Product Designer</div>
+          <div class="card-sub" data-i18n="port_s">Фокус на веб и мобильные интерфейсы</div>        </div>
       </a>
     </div>
 
-    <div class="footer">© <span id="year"></span> Дмитрий Казанский</div>
+    <div class="footer">© <span id="year"></span> <span data-i18n="name">Дмитрий Казанский</span></div>
   </section>
 </main>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+<!-- ===== АВТОПЕРЕВОД: RU по умолчанию, EN для нерусскоязычных ===== -->
+<script>
+(function () {
+  var STORE_KEY = 'tl_lang';
+
+  var EN = {
+    greeting: "Hi, I'm",
+    name: "Dmitry Kazanskiy",
+    contact: "Get in touch",
+
+    s_about: "About me",
+    about_1: "Over 10 years I've lost more than 100 kg in total.",
+    about_2: "Now I build my life around sport, discipline and creating products that help people change. On my blog I share my experience, mistakes and the tools that actually work over the long run.",
+
+    s_apps: "My apps for building discipline:",
+    forma_t: "Forma AI: Smart food diary",
+    forma_s: "Helps you stay on your calorie goal and avoid slip-ups",
+    infocus_t: "inFocus: habit tracker",
+    infocus_s: "A journal for daily discipline tracking",
+
+    s_blog: "My blog on social media",
+    ig_t: "Instagram: @dmkazanskiy",
+    ig_s: "I film motivating reels about my transformation",
+    tg_t: "Telegram: Hybrid athlete's journal",
+    tg_s: "I show my routine and share my thoughts",
+    yt_t: "YouTube: @dmkazanskiy",
+    yt_s: "I film video vlogs for my YouTube channel",
+
+    s_companies: "For companies:",
+    comp_1: "I've built a career as a product designer. I help turn complex ideas into clear digital products.",
+    comp_2: "Over recent years I've launched web services, mobile apps, AI tools and enterprise platforms for large companies.",
+
+    port_t: "Senior Product Designer",
+    port_s: "Focused on web and mobile interfaces"
+  };
+
+  var RU = {};
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    var k = el.getAttribute('data-i18n');
+    if (!(k in RU)) RU[k] = el.textContent;
+  });
+
+  var META = {
+    ru: {
+      title: "Дмитрий Казанский",
+      desc: "Спорт, дисциплина и продукты, которые помогают людям меняться. Приложения, блог и портфолио."
+    },
+    en: {
+      title: "Dmitry Kazanskiy",
+      desc: "Sport, discipline and products that help people change. Apps, blog and portfolio."
+    }
+  };
+
+  function detect() {
+    var saved = localStorage.getItem(STORE_KEY);
+    if (saved === 'ru' || saved === 'en') return saved;
+    var nav = ((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase();
+    return /^(ru|uk|be|kk)\b/.test(nav) ? 'ru' : 'en';
+  }
+
+  function apply(lang) {
+    var dict = lang === 'en' ? EN : RU;
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n');
+      var v = dict[k];
+      if (v == null) v = RU[k];
+      if (v != null) el.textContent = v;
+    });
+
+    var m = META[lang] || META.ru;
+    document.title = m.title;
+    var d = document.querySelector('meta[name="description"]');
+    if (d) d.setAttribute('content', m.desc);
+    document.documentElement.setAttribute('lang', lang);
+
+    document.querySelectorAll('.lang [data-lang]').forEach(function (b) {
+      b.classList.toggle('is-active', b.getAttribute('data-lang') === lang);
+    });
+  }
+
+  function set(lang) {
+    localStorage.setItem(STORE_KEY, lang);
+    apply(lang);
+    if (window.gtag) gtag('event', 'lang_switch', { lang: lang });
+  }
+
+  document.querySelectorAll('.lang [data-lang]').forEach(function (b) {
+    b.addEventListener('click', function () { set(b.getAttribute('data-lang')); });
+  });
+
+  apply(detect());
+})();
 </script>
 
 <!-- ===== Google Analytics 4 ===== -->
